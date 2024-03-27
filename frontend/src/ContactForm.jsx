@@ -36,7 +36,7 @@ const ContactForm = ({}) => {
         }
     }
 
-    return 
+    return (
     <form onSubmit={onSubmit}>
         <div>
             <label htmlFor="firstName">First Name:</label>
@@ -44,7 +44,7 @@ const ContactForm = ({}) => {
         </div>
         <div>
             <label htmlFor="lastName">Last Name:</label>
-            <input type="text" id="lastName" value={lasttName} onChange={(e) => setLastName(e.target.value)} />
+            <input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </div>
         <div>
             <label htmlFor="email">Email:</label>
@@ -60,6 +60,7 @@ const ContactForm = ({}) => {
         </div>
         <button type="submit">Add Contact</button>
     </form>
-}
+    );
+};
 
 export default ContactForm
