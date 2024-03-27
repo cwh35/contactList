@@ -32,6 +32,26 @@ def create_contact():
     
     return jsonify({"message": "Contact created successfully!"}), 201
 
+# need to pass the ID of the user we want to update
+@app.route("/update_contact/<int:user_id>", methods=["PATCH"])
+def update_contact(user_id): # variable name needs to match up with the path parameter
+    contact = Contact.query.get(user_id) # get the contact with the ID passed in the URL
+
+    if not contact:
+        return jsonify({"message": "Contact not found"}), 404
+    
+    data = request.json # get the data from the request
+    contact.first_name = data.get("firstName", contact.first_name) # if the data is not passed, keep the old value
+    contact.last_name = data.get("lastName", contact.last_name)
+    contact.email = data.get("email", contact.email)
+    contact.phone = data.get("phone", contact.phone)
+    contact.address = data.get("address", contact.address)
+
+    # contact already exists (already added, all we have to do is commit)
+    db.session.commit()
+
+    return jsonify({"message": "Contact updated successfully!"}), 200
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all() # create all the different models defined in the database
