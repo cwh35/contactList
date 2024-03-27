@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import ContactList from './ContactList'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [contacts, setContacts] = useState([{"firstName":"Cam","lastName":"Henning","email": "email", "phone": "1234567890", "address": "1234 Main St", id: 1}])
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  useEffect(() => {
+    //fetchContacts()
+  }, [])
+
+  const fetchContacts = async () => {
+    // send request to the backend to get the contacts
+    // use fetch to send a request
+    const response = await fetch("http://127.0.0.1:5000/contacts")
+    const data = await response.json()
+    setContacts(data.contacts)
+    console.log(data.contacts)
+  }
+
+
+  return <ContactList contacts={contacts} />
+      
 }
 
 export default App
