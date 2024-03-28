@@ -4,7 +4,7 @@
 // th = table header
 import React from "react"
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, updateContact, updateCallback }) => {
     return <div>
         <h2>Contacts</h2>
         <table>
@@ -27,7 +27,7 @@ const ContactList = ({ contacts }) => {
                         <td>{contact.phone}</td>
                         <td>{contact.address}</td>
                         <td>
-                            <button>Edit</button>
+                            <button onClick = {() => updateContact(contact)}>Update</button>
                             <button>Delete</button>
                         </td>
                     </tr>
