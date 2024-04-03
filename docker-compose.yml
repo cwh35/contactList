@@ -37,32 +37,3 @@ services:
 
 volumes:
   pgdata: {}
-    
-
-# services:
-#   api:
-#     # path to build context (Dockerfile to create Docker image)
-#     build: 
-#       context: ./backend    
-
-#     # map port on local machine to port on Docker image
-#     ports:
-#       - "8081:8081"
-    
-#     # save changes made to the app to your image (data will persist the next time the container is run)
-#     # ./backend is where to save persistent data, /backend is the directory we're grabbing the changes from
-#     # volumes:
-#     #   - ./backend:/backend
-
-#     # # Handles the command used to run the project in the Docker container
-#     # command: bash -c "python manage.py runserver 0.0.0.0:8000"
-
-#   web:
-#     build: 
-#       context: ./frontend
-#     ports:
-#       - "3000:80"
-
-#     # mount code in a volume so that we can sync our changes with the container while developing
-#     volumes:
-#       - ./frontend/src:/frontend/src
