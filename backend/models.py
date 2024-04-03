@@ -2,11 +2,11 @@
 from config import db
 
 class Contact(db.Model):
-    id = db.Column(db.Integer, primary_key=True) # this means this is the key we use for indexing and it must be unique for every single entry in the database
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True) # this means this is the key we use for indexing and it must be unique for every single entry in the database
     first_name = db.Column(db.String(50), unique=False, nullable=False) # cannot pass a null value
     last_name = db.Column(db.String(50), unique=False, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
-    phone = db.Column(db.Integer, unique=True, nullable=False)
+    phone = db.Column(db.BigInteger, unique=True, nullable=False)
     address = db.Column(db.String(100), unique=False, nullable=False)
 
     def to_json(self):
