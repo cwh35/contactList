@@ -3,6 +3,10 @@ from flask import request, jsonify
 from config import app, db
 from models import Contact
 
+@app.route("/")
+def home():
+    return "Updated version 4/2 8:40pm"
+
 @app.route("/contacts", methods=["GET"])
 def get_contacts():
     contacts = Contact.query.all()
